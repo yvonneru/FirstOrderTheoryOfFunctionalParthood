@@ -1,0 +1,61 @@
+(forall (x)
+        (iff    (Obj x)
+                (exists (y)
+                        (Occ x y))))
+
+(forall (x)
+        (iff    (Soa x)
+                (exists (y)
+                        (Occ y x))))
+
+(forall (x)
+        (if     (Soa x)
+                (notless x x)))
+
+(forall (x y)
+        (if     (less x y)
+                (notless y x)))
+                
+(forall (x y)
+        (if     (and    (less x y)
+                        (less y z))
+                (less x z)))
+        
+(forall (x y)
+        (if     (less x y)
+                (and    (Soa x)
+                        (Soa y))))
+                        
+(forall (x y)
+        (iff    (leq x y)
+                (or     (less x y)
+                        (and    (= x y)
+                                (Soa x)))))
+                                
+(forall (x)
+        (if     (Obj x)
+                (not (Soa x))))
+                
+(forall (x y)
+        (if     (leq x y)
+                (forall (z)
+                        (if     (Occ z x)
+                                (Occ z y)))))
+                                
+(forall (x y)
+        (if     (design x y)
+                (and    (Soa x)
+                        (Obj y))))
+                        
+(forall (x)
+        (iff    (Art x)
+                (exists (y)
+                        (design y x))))
+                        
+(forall(x y)
+        (iff    (fullDesign x y)
+                (and    (design(x y)
+                        (forall (z)
+                                (if     (design z y)
+                                        (leq z x)))))))
+                                        
